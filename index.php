@@ -1,10 +1,17 @@
 <?php
-
-$lunghezza = isset($_GET['lunghezza']) ? $_GET['lunghezza'] : 'null';
+session_start();
 
 include_once './function.php';
 
+// Converti in intero e usa 0 come default
+$lunghezza = isset($_GET['lunghezza']) ? (int)$_GET['lunghezza'] : 0;
 
+if ($lunghezza > 0) {
+    /* $password_creata = randompassword($lunghezza); // Salva il risultato in una variabile */
+    $_SESSION['password_generata'] = randompassword($lunghezza); // Usa la variabile per la sessione
+    header('Location: result.php');
+    exit();
+}
 ?>
 
 
@@ -24,10 +31,10 @@ include_once './function.php';
         <h1>Strong Password Generator</h1>
         <h2>Genera una password sicura</h2>
 
-        <form action="result.php" method="get" class="my-4">
+        <form action="" method="get" class="my-4">
             <div class="d-flex flex-column align-items-center">
                 <label for="">Inserisci qui la lunghezza della password desiderata</label>
-                <input type="number" min="1" max="5" id="lunghezza" name="lunghezza" placeholder="0">
+                <input type="number" min="1" max="10" id="lunghezza" name="lunghezza" placeholder="0">
             </div>
             <button type="submit" class="btn btn-primary mt-3">Genera Password</button>
         </form>
