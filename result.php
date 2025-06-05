@@ -3,6 +3,7 @@
 include_once './function.php';
 $lunghezza = isset($_GET['lunghezza']) ? $_GET['lunghezza'] : 'null';
 
+
 ?>
 
 
@@ -22,14 +23,22 @@ $lunghezza = isset($_GET['lunghezza']) ? $_GET['lunghezza'] : 'null';
         <h1>Password Generata</h1>
 
 
-        <div class='alert alert-success mt-3'>
+        <?php
 
-            La tua password sicura è: <strong><?php echo randompassword($lunghezza); ?></strong>
+        if ($lunghezza = 0) {
+            echo "<div class='alert alert-success mt-3'>
 
-        </div>
+            La tua password sicura è: <strong> " . randompassword($lunghezza) . "</strong>
 
+        </div>";
+        } else {
+            echo "<div class='alert alert-danger mt-3'>Devi inserire una lunghezza valida per la password.</div>";
+        }
+
+        ?>
 
         <a href="index.php" class="btn btn-primary">Genera nuova password</a>
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>

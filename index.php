@@ -2,9 +2,8 @@
 
 $lunghezza = isset($_GET['lunghezza']) ? $_GET['lunghezza'] : 'null';
 
-var_dump($lunghezza);
-
 include_once './function.php';
+
 
 ?>
 
