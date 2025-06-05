@@ -1,8 +1,8 @@
 <?php
 
-$lunghezza = isset($_GET['lunghezza']) ? intval($_GET['lunghezza']) : 5;
+$lunghezza = isset($_GET['lunghezza']) ? $_GET['lunghezza'] : 'null';
 
-var_dump(($lunghezza));
+var_dump($lunghezza);
 
 function randompassword($long)
 {
@@ -11,10 +11,14 @@ function randompassword($long)
     $possibleChars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_?*+&%!#@><°-:,/';
 
     for ($i = 0; $i < $long; $i++) {
-        $randomIndex = rand(0, strlen($possibleChars) - 1);
-        $password .= $possibleChars[$randomIndex];
+
+        $randomsign = rand(0, strlen($possibleChars) - 1); // strlen è usato per ottenere la lunghezza della stringa
+        $password .= $possibleChars[$randomsign];
+
+        /*  var_dump($randomsign); */
     }
-    return $password;
+
+    return "<div class='alert alert-success mt-3'>La tua password sicura è: <strong>" . $password . "</strong></div>";
 }
 
 ?>
@@ -39,7 +43,7 @@ function randompassword($long)
         <form action="" method="get" class="my-4">
             <div class="d-flex flex-column align-items-center">
                 <label for="">Inserisci qui la lunghezza della password desiderata</label>
-                <input type="number" min="1" max="5" id="lunghezza" name="lunghezza">
+                <input type="number" min="1" max="5" id="lunghezza" name="lunghezza" placeholder="0">
             </div>
             <button type="submit" class="btn btn-primary mt-3">Genera Password</button>
         </form>
