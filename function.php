@@ -14,5 +14,5 @@ function randompassword($long)
         /*  var_dump($randomsign); */
     }
 
-    return "<div class='alert alert-success mt-3'>La tua password sicura è: <strong>" . $password . "</strong></div>";
+    return $password;
 }

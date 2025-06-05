@@ -4,7 +4,7 @@ $lunghezza = isset($_GET['lunghezza']) ? $_GET['lunghezza'] : 'null';
 
 var_dump($lunghezza);
 
-include_once './function.php'
+include_once './function.php';
 
 ?>
 
@@ -25,7 +25,7 @@ include_once './function.php'
         <h1>Strong Password Generator</h1>
         <h2>Genera una password sicura</h2>
 
-        <form action="" method="get" class="my-4">
+        <form action="result.php" method="get" class="my-4">
             <div class="d-flex flex-column align-items-center">
                 <label for="">Inserisci qui la lunghezza della password desiderata</label>
                 <input type="number" min="1" max="5" id="lunghezza" name="lunghezza" placeholder="0">
@@ -33,11 +33,6 @@ include_once './function.php'
             <button type="submit" class="btn btn-primary mt-3">Genera Password</button>
         </form>
 
-        <?php
-
-        echo randompassword($lunghezza)
-
-        ?>
     </div>
 
 
