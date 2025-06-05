@@ -25,7 +25,7 @@ $lunghezza = isset($_GET['lunghezza']) ? $_GET['lunghezza'] : 'null';
 
         <?php
 
-        if ($lunghezza = 0) {
+        if ($lunghezza > 0) {
             echo "<div class='alert alert-success mt-3'>
 
             La tua password sicura è: <strong> " . randompassword($lunghezza) . "</strong>
